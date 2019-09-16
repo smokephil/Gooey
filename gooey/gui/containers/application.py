@@ -5,6 +5,7 @@ Primary orchestration and control point for Gooey.
 import sys
 
 import wx
+from wx.adv import TaskBarIcon
 
 from gooey.gui import cli
 from gooey.gui import events
@@ -187,7 +188,8 @@ class GooeyApplication(wx.Frame):
         self.SetSizer(sizer)
         self.console.Hide()
         self.Layout()
-        self.SetIcon(wx.Icon(self.buildSpec['images']['programIcon'], wx.BITMAP_TYPE_ICO))
+        self.tbicon = TaskBarIcon(iconType=wx.adv.TBI_DOCK)
+        self.tbicon.SetIcon(wx.Icon(self.buildSpec['images']['programIcon'], wx.BITMAP_TYPE_PNG))
 
 
 
