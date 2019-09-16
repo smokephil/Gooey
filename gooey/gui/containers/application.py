@@ -188,8 +188,12 @@ class GooeyApplication(wx.Frame):
         self.SetSizer(sizer)
         self.console.Hide()
         self.Layout()
-        self.tbicon = TaskBarIcon(iconType=wx.adv.TBI_DOCK)
-        self.tbicon.SetIcon(wx.Icon(self.buildSpec['images']['programIcon'], wx.BITMAP_TYPE_PNG))
+
+        icon = wx.Icon(self.buildSpec['images']['programIcon'], wx.BITMAP_TYPE_PNG)
+        self.SetIcon(icon)
+        # OSX needs to have its taskbar icon explicitly set
+        taskbarIcon = TaskBarIcon(iconType=wx.adv.TBI_DOCK)
+        taskbarIcon.SetIcon(icon)
 
 
 
