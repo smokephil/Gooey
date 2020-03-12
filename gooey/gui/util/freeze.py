@@ -42,6 +42,6 @@ def localResourcePath(path):
     """
     if is_frozen():
         basedir = getattr(sys, '_MEIPASS', None)
-        return os.path.join(basedir or sys.executable, path)
+        return os.path.join(basedir or sys.executable, os.path.basename(path.rstrip(os.path.sep)))
     else:
-        return os.path.join(os.getcwd(), path)
+        return path

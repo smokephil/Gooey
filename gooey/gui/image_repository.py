@@ -8,7 +8,7 @@ Image credit: kidcomic.net
 import os
 from functools import partial
 
-from gooey.gui.util.freeze import getResourcePath
+from gooey.gui.util.freeze import getResourcePath, localResourcePath
 from gooey.util.functional import merge
 
 filenames = {
@@ -36,6 +36,7 @@ def collectOverrides(targetDir, filenames):
     if targetDir == '::gooey/default':
         return {}
 
+    targetDir = localResourcePath(targetDir)
     pathto = partial(os.path.join, targetDir)
     if not os.path.isdir(targetDir):
         raise IOError('Unable to find the user supplied directory {}'.format(
